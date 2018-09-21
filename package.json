@@ -9,8 +9,8 @@
   "scripts": {
     "clean": "rm -rf dist",
     "build": "npm run clean && mkdir dist && babel ./src -s -d ./dist",
-    "register": "NODE_ENV=dev node -r ./bin/dev",
     "production": "npm run build && node ./bin/prod",
+    "register": "NODE_ENV=dev node -r ./bin/dev",
     "babel-node": "NODE_ENV=dev babel-node --presets=env",
     "dev": "nodemon --exec npm run babel-node -- ./src/app.js"
   },

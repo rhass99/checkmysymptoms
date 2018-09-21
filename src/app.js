@@ -1,8 +1,8 @@
-if (process.env.NODE_ENV == 'dev') require('dotenv').config()
+if (process.env.NODE_ENV === 'dev') require('dotenv').config()
 
 import express from 'express'
-const PORT = process.env.Port || 5000
+const PORT = process.env.PORT || 5000
 
 express()
-.get('/', (req, res) => res.send(process.env.MY_NAME))
-.listen(PORT, () => console.log(`Listening to ${process.env.MY_NAME} on port: ${PORT}`),'127.0.0.1')
+.get('/', (req, res) => res.send(`Listening to ${process.env.NODE_ENV} on port: ${PORT}`))
+.listen(PORT, '127.0.0.1')
