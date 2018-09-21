@@ -1,17 +1,18 @@
 'use strict';
 
-var _http = require('http');
+var _express = require('express');
 
-var _http2 = _interopRequireDefault(_http);
+var _express2 = _interopRequireDefault(_express);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-require('dotenv').config({ silent: process.env.NODE_ENV === 'production' });
+if (process.env.NODE_ENV == 'dev') require('dotenv').config();
 
-_http2.default.createServer(function (req, res) {
-    res.writeHead(200, { 'Content-Type': 'text/plain' });
-    res.end('Hello World\n');
-}).listen(process.env.PORT, '127.0.0.1');
+var PORT = process.env.Port || 5000;
 
-console.log('Server running at http://127.0.0.1:' + process.env.PORT + '/');
+(0, _express2.default)().get('/', function (req, res) {
+  return res.send(process.env.MY_NAME);
+}).listen(PORT, function () {
+  return console.log('Listening to ' + process.env.MY_NAME + ' on port: ' + PORT);
+}, '127.0.0.1');
 //# sourceMappingURL=app.js.map
