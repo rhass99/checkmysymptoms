@@ -10,6 +10,7 @@
     "clean": "rm -rf dist",
     "build": "npm run clean && mkdir dist && babel ./src -s -d ./dist",
     "production": "npm run build && node ./bin/prod",
+    "prepush": "npm run build && rm -rf node_modules",
     "register": "NODE_ENV=dev node -r ./bin/dev",
     "babel-node": "NODE_ENV=dev babel-node --presets=env",
     "dev": "nodemon --exec npm run babel-node -- ./src/app.js"
