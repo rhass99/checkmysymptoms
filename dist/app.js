@@ -12,5 +12,5 @@ var PORT = process.env.PORT || 5000;
 
 (0, _express2.default)().get('/', function (req, res) {
   return res.send('Listening to ' + process.env.NODE_ENV + ' on port: ' + PORT);
-}).listen(PORT, '127.0.0.1');
+}).listen(PORT, '0.0.0.0');
 //# sourceMappingURL=app.js.map
