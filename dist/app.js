@@ -8,7 +8,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 if (process.env.NODE_ENV === 'dev') require('dotenv').config();
 
-var PORT = process.env.PORT || 5000;
+var PORT = process.env.PORT || 4000;
 
 (0, _express2.default)().get('/', function (req, res) {
   return res.send('Listening to ' + process.env.NODE_ENV + ' on port: ' + PORT);
