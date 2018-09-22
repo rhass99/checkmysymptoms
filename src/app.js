@@ -5,4 +5,4 @@ const PORT = process.env.PORT || 5000
 
 express()
 .get('/', (req, res) => res.send(`Listening to ${process.env.NODE_ENV} on port: ${PORT}`))
-.listen(PORT, '127.0.0.1')
+.listen(PORT, '0.0.0.0')
