@@ -9,11 +9,11 @@
   "scripts": {
     "clean": "rm -rf dist",
     "build": "npm run clean && mkdir dist && babel ./src -s -d ./dist",
-    "production": "npm run build && node ./bin/prod",
+    "production": "node ./bin/prod",
     "prepush": "npm run build && rm -rf node_modules",
     "register": "NODE_ENV=dev node -r ./bin/dev",
     "babel-node": "NODE_ENV=dev babel-node",
-    "dev": "nodemon --exec npm run babel-node -- ./src/app.js"
+    "dev": "nodemon --exec npm run babel-node -- ./src/index.js"
   },
   "repository": {
     "type": "git",
@@ -26,14 +26,15 @@
   },
   "homepage": "https://github.com/rhass99/symptom-checker#readme",
   "dependencies": {
-    "axios": "^0.18.0",
-    "express": "^4.16.3"
+    "axios": "0.18.0",
+    "body-parser": "1.18.3",
+    "express": "4.16.3"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.7.0",
-    "babel-register": "^6.26.0",
-    "dotenv": "^6.0.0",
-    "nodemon": "^1.18.4"
+    "babel-cli": "6.26.0",
+    "babel-preset-env": "1.7.0",
+    "babel-register": "6.26.0",
+    "dotenv": "6.0.0",
+    "nodemon": "1.18.4"
   }
 }
