@@ -11,7 +11,6 @@ yarn-error.log*
 *.dev
 .DS_Store
 .idea
-/src/config
 
 # Docker
 Dockerfile
