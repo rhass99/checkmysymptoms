@@ -3,7 +3,7 @@ if (process.env.NODE_ENV === 'dev') require('dotenv').config();
 import express from 'express';
 import setupMiddleware from './middleware';
 import { asyncSequelize } from '../models/index';
-const PORT = process.env.PORT
+const PORT = process.env.PORT;
 
 // Declare an app from express
 const app = express();
