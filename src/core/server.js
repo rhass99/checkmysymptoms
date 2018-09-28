@@ -1,6 +1,9 @@
+if (process.env.NODE_ENV === 'dev') require('dotenv').config();
+
 import express from 'express';
 import setupMiddleware from './middleware';
-import sequelize from './db'
+import { asyncSequelize } from '../models/index';
+const PORT = process.env.PORT
 
 // Declare an app from express
 const app = express();
@@ -9,12 +12,12 @@ const app = express();
 const apiRouter = express.Router();
 
 // Start DB
-sequelize.authenticate().then(() => {console.log('Connection has been established.');
-}).catch(err => {console.error('Unable to connect to database: ', err);});
+asyncSequelize();
+// sequelize.authenticate().then(() => {console.log('Connection has been established.');
+// }).catch(err => {console.error('Unable to connect to database: ', err);});
 
 // Setup middleware
 setupMiddleware(app);
-
 
 app.get('/', (req, res) => res.send(`Listening to ${process.env.NODE_ENV} on port: ${PORT}`));
 
@@ -26,4 +29,4 @@ app.post('/lions', (req, res, next) => {
     res.json(db);
 });
 
-export default app
+export default app;

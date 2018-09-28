@@ -13,7 +13,7 @@
     "prepush": "npm run build && rm -rf node_modules",
     "register": "NODE_ENV=dev node -r ./bin/dev",
     "babel-node": "NODE_ENV=dev babel-node",
-    "dev": "nodemon --exec npm run babel-node -- ./src/index.js"
+    "dev": "nodemon --exec npm run babel-node -- ./src/app.js"
   },
   "repository": {
     "type": "git",

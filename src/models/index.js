@@ -1,19 +1,30 @@
 'use strict';
+if (process.env.NODE_ENV === 'dev') require('dotenv').config();
 
-const fs = require('fs');
-const path = require('path');
-const Sequelize = require('sequelize');
+import fs from 'fs'
+import path from 'path'
+import Sequelize from 'sequelize'
 const basename = path.basename(__filename);
+const port = process.env.PORT;
+
 const env = process.env.NODE_ENV || 'development';
-const config = require(__dirname + '/../config/config.json')[env];
+const database = process.env.DATABASE_DEV || process.env.DATABASE;
+const database_user = process.env.USER_DEV || process.env.USER;
+const database_pass = process.env.PASSWORD_DEV || process.env.PASSWORD;
+const database_host = process.env.HOST_DEV || process.env.HOST;
+
 const db = {};
 
-let sequelize;
-if (config.use_env_variable) {
-  sequelize = new Sequelize(process.env[config.use_env_variable], config);
-} else {
-  sequelize = new Sequelize(config.database, config.username, config.password, config);
-}
+const sequelize = new Sequelize(database, database_user, database_pass, {host: database_host, dialect: 'postgres', pool: {max: 5, min: 0, idle: 10000}});
+
+const asyncSequelize = async () => {
+    try {
+        sequelize.authenticate();
+        console.log(`Connection Established for ${env} on port: ${port}`);
+    } catch (err) {
+        console.error('Unable to connect', err);
+    }
+};
 
 fs
   .readdirSync(__dirname)
@@ -34,4 +45,4 @@ Object.keys(db).forEach(modelName => {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
-module.exports = db;
+module.exports = { db, asyncSequelize}
