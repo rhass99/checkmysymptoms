@@ -1,26 +1,32 @@
 if (process.env.NODE_ENV === 'development') require('dotenv').config();
 
+// Import express, middleware, routes, db and model.
+// Need to add logging ??
 import express from 'express';
 import setupMiddleware from './middleware';
 import db from '../models/index'
 import model from '../models/index';
-const DB_URI = process.env.DATABASE_DEV_URL || process.env.DATABASE_URL;
-const PORT = process.env.PORT;
 
-// Declare an app from express
+
+// Declare express app
 const app = express();
+// Declare express router
+const apiRouter = express.Router();
+// Declare express body-parser middleware
+setupMiddleware(app);
 
-// Start DB
+
+// Remove this later once connection is finalized
+const PORT = process.env.PORT;
+const DB_URI = process.env.DATABASE_DEV_URL || process.env.DATABASE_URL;
+// Start DB - Remove DB_URI reference
 db.sequelize.authenticate()
     .then(() => console.log(`Connected to ${DB_URI}`))
     .catch(() => console.log('Not connected'));
 
-// Declare express router
-const apiRouter = express.Router();
 
-// Setup middleware
-setupMiddleware(app);
-
+// Start the application routes
+// Move routing implementation into routes folder
 app.get('/checkconnection', (req, res) => res.send(`Listening to ${process.env.NODE_ENV} on port: ${PORT} while Connected to ${DB_URI}`));
 
 app.get('/user', (req, res) => {
@@ -31,12 +37,6 @@ app.get('/user', (req, res) => {
         .catch((err) => console.log(err));
 });
 
-app.post('/lions', (req, res, next) => {
-    console.log(req.body);
-    let myLion = req.body;
-    myLion.id = "1";
-    db.push(myLion);
-    res.json(db);
-});
 
+// Export the declared Express app
 export default app;

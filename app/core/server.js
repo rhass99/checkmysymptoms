@@ -20,21 +20,25 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 if (process.env.NODE_ENV === 'development') require('dotenv').config();
 
-const DB_URI = process.env.DATABASE_DEV_URL || process.env.DATABASE_URL;
-const PORT = process.env.PORT;
+// Import express, middleware, routes, db and model.
+// Need to add logging ??
 
-// Declare an app from express
+
+// Declare express app
 const app = (0, _express2.default)();
-
-// Start DB
-_index2.default.sequelize.authenticate().then(() => console.log(`Connected to ${DB_URI}`)).catch(() => console.log('Not connected'));
-
 // Declare express router
 const apiRouter = _express2.default.Router();
-
-// Setup middleware
+// Declare express body-parser middleware
 (0, _middleware2.default)(app);
 
+// Remove this later once connection is finalized
+const PORT = process.env.PORT;
+const DB_URI = process.env.DATABASE_DEV_URL || process.env.DATABASE_URL;
+// Start DB - Remove DB_URI reference
+_index2.default.sequelize.authenticate().then(() => console.log(`Connected to ${DB_URI}`)).catch(() => console.log('Not connected'));
+
+// Start the application routes
+// Move routing implementation into routes folder
 app.get('/checkconnection', (req, res) => res.send(`Listening to ${process.env.NODE_ENV} on port: ${PORT} while Connected to ${DB_URI}`));
 
 app.get('/user', (req, res) => {
@@ -43,13 +47,6 @@ app.get('/user', (req, res) => {
     _index2.default.User.findOne({ where: { email: email } }).then(user => res.json(user)).catch(err => console.log(err));
 });
 
-app.post('/lions', (req, res, next) => {
-    console.log(req.body);
-    let myLion = req.body;
-    myLion.id = "1";
-    _index2.default.push(myLion);
-    res.json(_index2.default);
-});
-
+// Export the declared Express app
 exports.default = app;
 //# sourceMappingURL=server.js.map
