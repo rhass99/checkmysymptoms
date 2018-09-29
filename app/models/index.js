@@ -24,7 +24,7 @@ if (process.env.NODE_ENV === 'development') require('dotenv').config();
 const basename = _path2.default.basename(__filename);
 const DB_URI = process.env.DATABASE_DEV_URL;
 
-const config = require(__dirname + '/../../config/config.json');
+const config = require(__dirname + '/../config/config.json');
 //console.log(config);
 const db = {};
 

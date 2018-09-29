@@ -9,7 +9,7 @@ import Sequelize from 'sequelize';
 const basename = path.basename(__filename);
 const DB_URI = process.env.DATABASE_DEV_URL;
 
-const config = require(__dirname + '/../../config/config.json');
+const config = require(__dirname + '/../config/config.json');
 //console.log(config);
 const db = {};
 
