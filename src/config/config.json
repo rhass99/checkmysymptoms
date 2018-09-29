@@ -3,13 +3,12 @@
 	  "use_env_variable": "DATABASE_DEV_URL"
   },
   "test": {
-    "username": "root",
-    "password": null,
-    "database": "database_test",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+	  "use_env_variable": "DATABASE_DEV_URL"
   },
   "production": {
-	  "use_env_variable": "DATABASE_DEV_URL"
-  }
+	  "use_env_variable": "URI"
+  },
+	"staging": {
+		"use_env_variable": "URI"
+	}
 }
