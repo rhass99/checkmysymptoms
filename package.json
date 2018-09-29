@@ -8,7 +8,7 @@
   "main": "app.js",
   "scripts": {
     "clean": "rm -rf app",
-    "build": "npm run clean && mkdir app && babel ./src -s -d ./app",
+    "build": "npm run clean && mkdir app && babel ./src -s -d ./app --copy-files",
     "production": "node ./bin/prod",
     "prepush": "npm run build && rm -rf node_modules",
     "register": "NODE_ENV=development node -r ./bin/dev",

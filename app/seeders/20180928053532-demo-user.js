@@ -15,4 +15,3 @@ module.exports = {
         return queryInterface.bulkDelete('Users', null, {});
     }
 };
-//# sourceMappingURL=20180928053532-demo-user.js.map
