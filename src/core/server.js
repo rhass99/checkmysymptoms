@@ -15,8 +15,6 @@ db.sequelize.authenticate()
     .then(() => console.log(`Connected to ${DB_URI}`))
     .catch(() => console.log('Not connected'));
 
-console.log(model);
-
 // Declare express router
 const apiRouter = express.Router();
 

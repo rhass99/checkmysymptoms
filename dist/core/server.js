@@ -29,8 +29,6 @@ const app = (0, _express2.default)();
 // Start DB
 _index2.default.sequelize.authenticate().then(() => console.log(`Connected to ${DB_URI}`)).catch(() => console.log('Not connected'));
 
-console.log(_index2.default);
-
 // Declare express router
 const apiRouter = _express2.default.Router();
 

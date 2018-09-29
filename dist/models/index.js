@@ -1,7 +1,7 @@
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 
 var _fs = require('fs');
@@ -22,34 +22,44 @@ if (process.env.NODE_ENV === 'development') require('dotenv').config();
 //const env = process.env.NODE_ENV || 'development';
 
 const basename = _path2.default.basename(__filename);
-const DB_URI = process.env.DATABASE_DEV_URL || process.env.DATABASE_URL;
+const DB_URI = process.env.DATABASE_DEV_URL;
 
 const config = require(__dirname + '/../../config/config.json');
 //console.log(config);
 const db = {};
 
-let sequelize = new _sequelize2.default(DB_URI, {
-  dialect: 'postgres',
-  pool: {
-    max: 5,
-    min: 0,
-    idle: 10000
-  },
-  sync: true,
-  forceSync: false
-});
+if (process.env.DATABASE_URL) {
+    // the application is executed on Heroku ... use the postgres database
+    var sequelize = new _sequelize2.default(process.env.DATABASE_URL, {
+        dialect: 'postgres',
+        protocol: 'postgres',
+        logging: true //false
+    });
+} else {
+    // the application is executed on the local machine ... use mysql
+    sequelize = new _sequelize2.default(DB_URI, {
+        dialect: 'postgres',
+        pool: {
+            max: 5,
+            min: 0,
+            idle: 10000
+        },
+        sync: true,
+        forceSync: false
+    });
+}
 
 _fs2.default.readdirSync(__dirname).filter(file => {
-  return file.indexOf('.') !== 0 && file !== basename && file.slice(-3) === '.js';
+    return file.indexOf('.') !== 0 && file !== basename && file.slice(-3) === '.js';
 }).forEach(file => {
-  const model = sequelize['import'](_path2.default.join(__dirname, file));
-  db[model.name] = model;
+    const model = sequelize['import'](_path2.default.join(__dirname, file));
+    db[model.name] = model;
 });
 
 Object.keys(db).forEach(modelName => {
-  if (db[modelName].associate) {
-    db[modelName].associate(db);
-  }
+    if (db[modelName].associate) {
+        db[modelName].associate(db);
+    }
 });
 
 db.sequelize = sequelize;
