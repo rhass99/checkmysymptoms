@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../src/core/router.js"],"names":["apiRouter","express","Router"],"mappings":";;AAAA;;;;;;AAEA,MAAMA,YAAYC,kBAAQC,MAAR,EAAlB","file":"router.js","sourcesContent":["import express from 'express';\n\nconst apiRouter = express.Router();\n\n"]}
