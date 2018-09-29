@@ -6,9 +6,10 @@ import path from 'path';
 import Sequelize from 'sequelize';
 
 const basename = path.basename(__filename);
-const DB_URI = process.env.DATABASE_DEV_URL || process.env.URI;
+const DB_URI = process.env.DATABASE_DEV_URL || process.env.DATABASE_URL;
 //const env = process.env.NODE_ENV || 'development';
-const config = require(__dirname + '/../config/config.json');
+const config = require(__dirname + '/../../config/config.json');
+console.log(config);
 const db = {};
 
 let sequelize = new Sequelize(DB_URI, {

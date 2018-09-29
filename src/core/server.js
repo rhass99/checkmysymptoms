@@ -4,7 +4,7 @@ import express from 'express';
 import setupMiddleware from './middleware';
 import db from '../models/index'
 import userModel from "../models/user";
-const DB_URI = process.env.DATABASE_DEV_URL || process.env.URI;
+const DB_URI = process.env.DATABASE_DEV_URL || process.env.DATABASE_URL;
 const PORT = process.env.PORT;
 
 // Declare an app from express

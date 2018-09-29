@@ -24,6 +24,7 @@ const basename = _path2.default.basename(__filename);
 const DB_URI = process.env.DATABASE_DEV_URL || process.env.URI;
 //const env = process.env.NODE_ENV || 'development';
 const config = require(__dirname + '/../config/config.json');
+console.log(config)
 const db = {};
 
 let sequelize = new _sequelize2.default(DB_URI, {
