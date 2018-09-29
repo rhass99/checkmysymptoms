@@ -21,10 +21,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 if (process.env.NODE_ENV === 'development') require('dotenv').config();
 
 const basename = _path2.default.basename(__filename);
-const DB_URI = process.env.DATABASE_DEV_URL || process.env.URI;
+const DB_URI = process.env.DATABASE_DEV_URL || process.env.DATABASE_URL;
 //const env = process.env.NODE_ENV || 'development';
-const config = require(__dirname + '/../config/config.json');
-console.log(config)
+const config = require(__dirname + '/../../config/config.json');
+console.log(config);
 const db = {};
 
 let sequelize = new _sequelize2.default(DB_URI, {

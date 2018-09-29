@@ -24,7 +24,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 if (process.env.NODE_ENV === 'development') require('dotenv').config();
 
-const DB_URI = process.env.DATABASE_DEV_URL || process.env.URI;
+const DB_URI = process.env.DATABASE_DEV_URL || process.env.DATABASE_URL;
 const PORT = process.env.PORT;
 
 // Declare an app from express
