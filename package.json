@@ -7,8 +7,8 @@
   "description": "symptom checker API",
   "main": "app.js",
   "scripts": {
-    "clean": "rm -rf dist",
-    "build": "npm run clean && mkdir dist && babel ./src -s -d ./dist",
+    "clean": "rm -rf app",
+    "build": "npm run clean && mkdir app && babel ./src -s -d ./app",
     "production": "node ./bin/prod",
     "prepush": "npm run build && rm -rf node_modules",
     "register": "NODE_ENV=development node -r ./bin/dev",
