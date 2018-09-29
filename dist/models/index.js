@@ -19,12 +19,13 @@ var _sequelize2 = _interopRequireDefault(_sequelize);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 if (process.env.NODE_ENV === 'development') require('dotenv').config();
+//const env = process.env.NODE_ENV || 'development';
 
 const basename = _path2.default.basename(__filename);
 const DB_URI = process.env.DATABASE_DEV_URL || process.env.DATABASE_URL;
-//const env = process.env.NODE_ENV || 'development';
+
 const config = require(__dirname + '/../../config/config.json');
-console.log(config);
+//console.log(config);
 const db = {};
 
 let sequelize = new _sequelize2.default(DB_URI, {

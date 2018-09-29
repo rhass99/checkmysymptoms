@@ -1,6 +1,9 @@
 'use strict';
 
-module.exports = (sequelize, DataTypes) => {
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+const userModel = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
     first_name: DataTypes.STRING,
     last_name: DataTypes.STRING,
@@ -13,4 +16,6 @@ module.exports = (sequelize, DataTypes) => {
   };
   return User;
 };
+
+exports.default = userModel;
 //# sourceMappingURL=user.js.map
