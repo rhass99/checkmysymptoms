@@ -1,7 +1,4 @@
-# Backend API for BCIT project symptom checker
-
-### Project stopped and migrated to use DynamoDB instead of postgres. Decided to keep the repo for reference. 
-###No-longer maintained
+# Backend API for BCIT project symptom checker using Postgres SQL and Sequelize
 
 Consume an API from Infermedica where you get AI assisted dignosis for your symptoms. Get referred to a pharmacist to give you more primary advice on your symptoms.
 
