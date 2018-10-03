@@ -5,7 +5,7 @@ if (process.env.NODE_ENV === 'development') require('dotenv').config();
 // Import http, createServer and express app from the server file
 import http from 'http';
 import { createServer} from 'http';
-import app from './core/server';
+import app from './server';
 const PORT = process.env.PORT || 4000;
 
 // Create the server and run app.

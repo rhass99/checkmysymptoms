@@ -4,8 +4,8 @@ if (process.env.NODE_ENV === 'development') require('dotenv').config();
 // Need to add logging ??
 import express from 'express';
 import setupMiddleware from './middleware';
-import db from '../models/index'
-import model from '../models/index';
+import db from './models/index'
+import model from './models/index';
 
 
 // Declare express app
